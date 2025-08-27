@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <h1>Saldırı Oyunu</h1>
+    </header>
+    <section id="frontend">
+        <div class="card">
+            <h2 class="player-name">Bilgisayar</h2>
+            <div class="health-bar"></div>
+            <p>{{enemyHealth}}%</p>
+        </div>
+
+        <div class="card">
+            <h2 class="player-name">{{playerName}}</h2>
+            <div class="health-bar"></div>
+            <p>{{playerHealth}}%</p>
+        </div>
+        <div class="card">
+            <div v-if="!isGameOverTwo">
+                <button @click="attack()">Saldır</button>
+                <button :style="{backgroundColor: superAttackCount <=0 ? 'orange' : 'purple'}" @click="superAttackk()">Süper Saldırı</button>
+                <button @click="healMethod()">Can Ver</button>
+            </div>
+            <div v-if="isGameOverTwo">
+                <h2>Oyun Bitti</h2>
+                <h3 v-if="!whosGonnaWin">Bilgisayar Kazandı!</h3>
+                <h3 v-else-if="whosGonnaWin">{{playerName}} Kazandı!</h3>
+                <h3 v-else="">Beraberlik.</h3>
+                <button @click="startNewGame()">Tekrar Oyna!</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
+canın 20 den yüksekse> (saldır) veya (süper varsa at)
+canın 20 den düşükse> (iyileş) veya (düşman canı 20 den düşükse ve süper varsa at)
